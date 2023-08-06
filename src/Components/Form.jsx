@@ -4,9 +4,9 @@ import { Mensaje } from './Mensaje';
 
 export const Form = ({ setForm, selectedMovie }) => {
 
-    const [destinatario, setEmail] = useState('')
+    const [destinatario, setEmail] = useState("")
 
-    const [horaFecha, setDate] = useState('')
+    const [horaFecha, setDate] = useState("")
 
     const [mensaje, setMensaje] = useState(false)
 
@@ -14,7 +14,7 @@ export const Form = ({ setForm, selectedMovie }) => {
     const handleSubmit = async e =>{
         e.preventDefault();
 
-        if([destinatario, horaFecha].includes('')){
+        if([destinatario, horaFecha].includes("")){
             setMensaje('Todos los campos son obligatorios')
 
             setTimeout(() => {
@@ -27,14 +27,15 @@ export const Form = ({ setForm, selectedMovie }) => {
 
         const pelicula = selectedMovie;
 
-        const datos = [
+        const datos = {
             destinatario,
             horaFecha,
             pelicula
-         ]
+        }
 
         
          try {
+            console.log(datos);
             const config = {
                 method: "POST",
                 headers: {
@@ -42,7 +43,7 @@ export const Form = ({ setForm, selectedMovie }) => {
                 },
                 body: JSON.stringify(datos)
              } 
-
+             console.log(datos);
             const response = await fetch("http://localhost:3000/enviarCorreo/enviarCorreo", config)
             const resultado = await response.json()
             console.log(resultado);
