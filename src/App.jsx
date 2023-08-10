@@ -39,8 +39,20 @@ function App() {
   },[answer])
 
 
+//? Uso de localStorage para mantener los estados de los componmentes
+//! Nota: primero debes poner el la logica para que se conserve el estado y luego guardar en local
+
+  useEffect( ()=>{
+    const isDisabledLS = localStorage.getItem('isDisabled')
+    if (isDisabledLS === "false") {
+      setIsDisabled(false)
+    }
+  },[])
+
+
   useEffect( ()=>{
     localStorage.setItem('isDisabled', isDisabled.toString())
+    console.log(isDisabled);
   },[isDisabled])
 
   useEffect( ()=>{
@@ -53,13 +65,6 @@ function App() {
   useEffect( ()=>{
     localStorage.setItem('respuesta', respuesta.toString())
   },[respuesta])
-
-  useEffect( ()=>{
-    const isDisabledLS = localStorage.getItem('isDisabled')
-    if (isDisabledLS === "true") {
-      setIsDisabled(false)
-    }
-  },[])
 
 
   //* Array de Objetos tipo Peliculas

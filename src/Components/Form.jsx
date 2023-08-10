@@ -44,7 +44,7 @@ export const Form = ({ setForm, selectedMovie }) => {
                 body: JSON.stringify(datos)
              } 
              console.log(datos);
-            const response = await fetch("http://localhost:3000/enviarCorreo/enviarCorreo", config)
+            const response = await fetch("http://44.217.117.88/enviarCorreo/enviarCorreo", config)
             const resultado = await response.json()
             console.log(resultado);
          } catch (err) {
